@@ -1,0 +1,809 @@
+{\rtf1\ansi\ansicpg1252\deff0\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Msftedit 5.41.21.2510;}\viewkind4\uc1\pard\sa200\sl276\slmult1\qc\lang9\b\f0\fs22 output:\par
+\pard\sa200\sl276\slmult1\b0\par
+R version 4.0.3 (2020-10-10) -- "Bunny-Wunnies Freak Out"\par
+Copyright (C) 2020 The R Foundation for Statistical Computing\par
+Platform: i386-w64-mingw32/i386 (32-bit)\par
+\par
+R is free software and comes with ABSOLUTELY NO WARRANTY.\par
+You are welcome to redistribute it under certain conditions.\par
+Type 'license()' or 'licence()' for distribution details.\par
+\par
+  Natural language support but running in an English locale\par
+\par
+R is a collaborative project with many contributors.\par
+Type 'contributors()' for more information and\par
+'citation()' on how to cite R or R packages in publications.\par
+\par
+Type 'demo()' for some demos, 'help()' for on-line help, or\par
+'help.start()' for an HTML browser interface to help.\par
+Type 'q()' to quit R.\par
+\par
+> \par
+> #upload dataset\par
+> dataset<-read.csv('C:\\\\Users\\\\Nikita\\\\Downloads\\\\Covid 19.csv')\par
+> str(dataset)\par
+'data.frame':\tab 105 obs. of  4 variables:\par
+ $ S.No                : int  1 2 3 4 5 6 7 8 9 10 ...\par
+ $ District            : chr  "Ariyalur" "Ariyalur" "Chennai" "Chennai" ...\par
+ $ Name.of.the.Hospital: chr  "Jayamkondan_SDH" "Golden Hospital" "CSI Kalyani General Hospital, Chennai Town" "GEM Hospital And Research Ctr Pvt.Ltd, Chennai Town" ...\par
+ $ Type.of.Hospital    : chr  "Category II - Dedicated COVID Health Center / DCHC" "Category II - Dedicated COVID Health Center / DCHC" "Category II - Dedicated COVID Health Center / DCHC" "Category II - Dedicated COVID Health Center / DCHC" ...\par
+> dim(dataset)\par
+[1] 105   4\par
+> View(dataset)\par
+> summary(dataset)\par
+      S.No       District         Name.of.the.Hospital Type.of.Hospital  \par
+ Min.   :  1   Length:105         Length:105           Length:105        \par
+ 1st Qu.: 27   Class :character   Class :character     Class :character  \par
+ Median : 53   Mode  :character   Mode  :character     Mode  :character  \par
+ Mean   : 53                                                             \par
+ 3rd Qu.: 79                                                             \par
+ Max.   :105                                                             \par
+> head(dataset)\par
+  S.No District                                Name.of.the.Hospital\par
+1    1 Ariyalur                                     Jayamkondan_SDH\par
+2    2 Ariyalur                                     Golden Hospital\par
+3    3  Chennai          CSI Kalyani General Hospital, Chennai Town\par
+4    4  Chennai GEM Hospital And Research Ctr Pvt.Ltd, Chennai Town\par
+5    5  Chennai                                     Kavery Hospital\par
+6    6  Chennai           Prashanth Hospital Velachery Chennai Town\par
+                                    Type.of.Hospital\par
+1 Category II - Dedicated COVID Health Center / DCHC\par
+2 Category II - Dedicated COVID Health Center / DCHC\par
+3 Category II - Dedicated COVID Health Center / DCHC\par
+4 Category II - Dedicated COVID Health Center / DCHC\par
+5 Category II - Dedicated COVID Health Center / DCHC\par
+6 Category II - Dedicated COVID Health Center / DCHC\par
+> head(dataset,n=10)\par
+   S.No   District                                Name.of.the.Hospital\par
+1     1   Ariyalur                                     Jayamkondan_SDH\par
+2     2   Ariyalur                                     Golden Hospital\par
+3     3    Chennai          CSI Kalyani General Hospital, Chennai Town\par
+4     4    Chennai GEM Hospital And Research Ctr Pvt.Ltd, Chennai Town\par
+5     5    Chennai                                     Kavery Hospital\par
+6     6    Chennai           Prashanth Hospital Velachery Chennai Town\par
+7     7 Coimbatore                                    Mettupalayam_SDH\par
+8     8 Coimbatore                         G. Kuppusamy Naidu Hospital\par
+9     9  Cuddalore      Subha Anandham Medical Centre, Cuddalore, Town\par
+10   10 Dharmapuri                                           Harur_SDH\par
+                                     Type.of.Hospital\par
+1  Category II - Dedicated COVID Health Center / DCHC\par
+2  Category II - Dedicated COVID Health Center / DCHC\par
+3  Category II - Dedicated COVID Health Center / DCHC\par
+4  Category II - Dedicated COVID Health Center / DCHC\par
+5  Category II - Dedicated COVID Health Center / DCHC\par
+6  Category II - Dedicated COVID Health Center / DCHC\par
+7  Category II - Dedicated COVID Health Center / DCHC\par
+8  Category II - Dedicated COVID Health Center / DCHC\par
+9  Category II - Dedicated COVID Health Center / DCHC\par
+10 Category II - Dedicated COVID Health Center / DCHC\par
+> tail(dataset)\par
+    S.No     District                                 Name.of.the.Hospital\par
+100  100   Villupuram                    Maragadam Hospitalvillupuram Town\par
+101  101   Villupuram                   Sri Sanjeevi Hospital Kallakurichi\par
+102  102 Virudhunagar                                         Sivakasi_SDH\par
+103  103 Virudhunagar                                           Sathur_SDH\par
+104  104 Virudhunagar       City Hospital, Aruppukottai, Virudhunagar Town\par
+105  105 Virudhunagar Sri Krishna Hospital, Rajapalayam, Virudhunagar Town\par
+                                      Type.of.Hospital\par
+100 Category II - Dedicated COVID Health Center / DCHC\par
+101 Category II - Dedicated COVID Health Center / DCHC\par
+102 Category II - Dedicated COVID Health Center / DCHC\par
+103 Category II - Dedicated COVID Health Center / DCHC\par
+104 Category II - Dedicated COVID Health Center / DCHC\par
+105 Category II - Dedicated COVID Health Center / DCHC\par
+> tail(dataset,n=-10)\par
+    S.No        District                                  Name.of.the.Hospital\par
+11    11      Dharmapuri               Supa Hospital, Pvt.Ltd, Dharmapuri Town\par
+12    12      Dharmapuri                   Om Sakthi Hospital, Dharmapuri Town\par
+13    13      Dharmapuri                       DNV Polyclinic, Dharmapuri Town\par
+14    14        Dindigul                                        Kodaikanal_SDH\par
+15    15    Kallakurichi                                        Ulundurpet_SDH\par
+16    16    Kallakurichi                                        Tirukoilur_SDH\par
+17    17    Kancheepuram                                    Sriperumputhur_SDH\par
+18    18    Kancheepuram                                         Walajabad_SDH\par
+19    19    Kancheepuram                                       Uthiramerur_SDH\par
+20    20   Kanniyakumari               Holy Cross Hospital, Kanniyakumari Town\par
+21    21           Karur                      Apollo Logo Hospital, Karur Town\par
+22    22           Karur                       Amaravathi Hospital, Karur Town\par
+23    23     Krishnagiri             Kauvery Hospital, Hosur, Krishnagiri Town\par
+24    24     Krishnagiri       Chandrasekara Hospital, Hosur, Krishnagiri Town\par
+25    25         Madurai                                      Tirumangalam_SDH\par
+26    26         Madurai                                             Melur_SDH\par
+27    27         Madurai                    Devadoss Multispeciality Hospital.\par
+28    28         Madurai                   Lakshmana Multispeciality Hospital.\par
+29    29         Madurai                                 Rahavendhar Hospital.\par
+30    30         Madurai                                    Saravana Hospital.\par
+31    31    Nagapattinam            Arun Priya Nursing Home, Nagapattinam Town\par
+32    32    Nagapattinam         Ram Bone And Joint Hospial, Nagapattinam Town\par
+33    33    Nagapattinam                    Shanthi Nursing Home, Nagapattinam\par
+34    34    Nagapattinam                  Vishnu Hospital , Nagappattinam Town\par
+35    35        Namakkal                                      Tiruchengode_SDH\par
+36    36        Namakkal                                     Gh, Rasipuram_SDH\par
+37    37        Namakkal Aravinth Hospital, Rangar Sannadhi Str, Namakkal Town\par
+38    38        Namakkal                           M.M.Hospital, Namakkal Town\par
+39    39        Namakkal  Maharaja Speciality Hosp Mohanur Road, Namakkal Town\par
+40    40        Nilgiris                        Nankam Hospital, Nilgiris Town\par
+41    41        Nilgiris                   Sagayamatha Hospital, Nilgiris Town\par
+42    42      Perambalur                                  Lakshmi Nursing Home\par
+43    43     Pudukkottai                                       Viralimalai_SDH\par
+44    44     Pudukkottai                             Muthu Meenakshi Hospitals\par
+45    45     Pudukkottai          Sree Durga Surgical Clinic & Research Center\par
+46    46  Ramanathapuram                                        Paramakudi_SDH\par
+47    47  Ramanathapuram                        Aasi Multi Speciality Hospital\par
+48    48  Ramanathapuram                                   Kanagamani Hospital\par
+49    49           Salem                                             Athur_SDH\par
+50    50           Salem                                            Omalur_SDH\par
+51    51           Salem                                           Edapadi_SDH\par
+52    52           Salem                          Kurinji Hospital, Salem Town\par
+53    53           Salem                     SPMM Hospital Ammapet, Salem Town\par
+54    54       Sivaganga                                        Devakottai_SDH\par
+55    55       Sivaganga                      Senthil Hospital, Sivaganga Town\par
+56    56       Sivaganga                      Apollo Hospitals, Sivaganga Town\par
+57    57       Thanjavur                                         Papanasam_SDH\par
+58    58       Thanjavur                                      Thiruvaiyaru_SDH\par
+59    59       Thanjavur                         Anbu Hospital, Thanjavur Town\par
+60    60       Thanjavur     Meenakshi Multispeciality Hospital Thanjavur Town\par
+61    61       Thanjavur          KG Multi Speciality Hospital, Thanjavur Town\par
+62    62       Thanjavur      Diocese Of Thanjavur Society Olh, Thanjavur Town\par
+63    63    The Nilgiris                                           Connoor_SDH\par
+64    64           Theni                                            Cumbum_SDH\par
+65    65           Theni                      NRT Hospital Private, Theni Town\par
+66    66           Theni             Krishnammal Memorial Hospital, Theni Town\par
+67    67           Theni                      T N K H N V Hospital, Theni Town\par
+68    68      Thiruvarur                                 Thiruthuraipoondi_SDH\par
+69    69     Thoothukudi                                     Kayalpattinam_SDH\par
+70    70     Thoothukudi                                       Tiruchendur_SDH\par
+71    71     Thoothukudi                                          AVM Hospital\par
+72    72     Thoothukudi                 Sacred Heart Hospital, Tuticorin Town\par
+73    73 Tiruchirappalli                                         Srirangam_SDH\par
+74    74 Tiruchirappalli                 Maruti Hospital, Thennur, Trichy Town\par
+75    75 Tiruchirappalli              Sinduja Hospital, Manaparai, Trichy Town\par
+76    76     Tirunelveli                                        Shengottah_SDH\par
+77    77     Tirunelveli                                        Kudankulam_SDH\par
+78    78     Tirunelveli                                    Sankaran Kovil_SDH\par
+79    79     Tirunelveli                     Galaxy Hospital, Tirunelveli Town\par
+80    80     Tirunelveli      Ponra Multispeciality Hospital, Tirunelveli Town\par
+81    81     Tirunelveli                      Shifa Hospital, Tirunelveli Town\par
+82    82      Tirupathur                                             Ambur_SDH\par
+83    83      Tirupathur                                       Natrampalli_SDH\par
+84    84      Tirupathur                                       Vaniyambadi_SDH\par
+85    85        Tiruppur                                        Dharapuram_SDH\par
+86    86        Tiruppur                                          Palladam_SDH\par
+87    87        Tiruppur                  Revathi Medical Centre, Tirupur Town\par
+88    88        Tiruppur                    Sri Kumaran Hospital, Tirupur Town\par
+89    89      Tiruvallur                                         Tiruthani_SDH\par
+90    90      Tiruvallur                                           Ponneri_SDH\par
+91    91      Tiruvallur                       Sugam Hospital, Tiruvallur Town\par
+92    92      Tiruvallur                                       Aakash Hospital\par
+93    93       Tiruvarur                                   Navajeevan Hospital\par
+94    94       Tiruvarur                              Tiruvarur Medical Centre\par
+95    95         Vellore                                          Pentland_SDH\par
+96    96      Villupuram                                        Tindivanam_SDH\par
+97    97      Villupuram                                            Gingee_SDH\par
+98    98      Villupuram                                         E.S. Hospital\par
+99    99      Villupuram      I Med Super Speciality Hospitals Villupuram Town\par
+100  100      Villupuram                     Maragadam Hospitalvillupuram Town\par
+101  101      Villupuram                    Sri Sanjeevi Hospital Kallakurichi\par
+102  102    Virudhunagar                                          Sivakasi_SDH\par
+103  103    Virudhunagar                                            Sathur_SDH\par
+104  104    Virudhunagar        City Hospital, Aruppukottai, Virudhunagar Town\par
+105  105    Virudhunagar  Sri Krishna Hospital, Rajapalayam, Virudhunagar Town\par
+                                      Type.of.Hospital\par
+11  Category II - Dedicated COVID Health Center / DCHC\par
+12  Category II - Dedicated COVID Health Center / DCHC\par
+13  Category II - Dedicated COVID Health Center / DCHC\par
+14  Category II - Dedicated COVID Health Center / DCHC\par
+15  Category II - Dedicated COVID Health Center / DCHC\par
+16  Category II - Dedicated COVID Health Center / DCHC\par
+17  Category II - Dedicated COVID Health Center / DCHC\par
+18  Category II - Dedicated COVID Health Center / DCHC\par
+19  Category II - Dedicated COVID Health Center / DCHC\par
+20  Category II - Dedicated COVID Health Center / DCHC\par
+21  Category II - Dedicated COVID Health Center / DCHC\par
+22  Category II - Dedicated COVID Health Center / DCHC\par
+23  Category II - Dedicated COVID Health Center / DCHC\par
+24  Category II - Dedicated COVID Health Center / DCHC\par
+25  Category II - Dedicated COVID Health Center / DCHC\par
+26  Category II - Dedicated COVID Health Center / DCHC\par
+27  Category II - Dedicated COVID Health Center / DCHC\par
+28  Category II - Dedicated COVID Health Center / DCHC\par
+29  Category II - Dedicated COVID Health Center / DCHC\par
+30  Category II - Dedicated COVID Health Center / DCHC\par
+31  Category II - Dedicated COVID Health Center / DCHC\par
+32  Category II - Dedicated COVID Health Center / DCHC\par
+33  Category II - Dedicated COVID Health Center / DCHC\par
+34  Category II - Dedicated COVID Health Center / DCHC\par
+35  Category II - Dedicated COVID Health Center / DCHC\par
+36  Category II - Dedicated COVID Health Center / DCHC\par
+37  Category II - Dedicated COVID Health Center / DCHC\par
+38  Category II - Dedicated COVID Health Center / DCHC\par
+39  Category II - Dedicated COVID Health Center / DCHC\par
+40  Category II - Dedicated COVID Health Center / DCHC\par
+41  Category II - Dedicated COVID Health Center / DCHC\par
+42  Category II - Dedicated COVID Health Center / DCHC\par
+43  Category II - Dedicated COVID Health Center / DCHC\par
+44  Category II - Dedicated COVID Health Center / DCHC\par
+45  Category II - Dedicated COVID Health Center / DCHC\par
+46  Category II - Dedicated COVID Health Center / DCHC\par
+47  Category II - Dedicated COVID Health Center / DCHC\par
+48  Category II - Dedicated COVID Health Center / DCHC\par
+49  Category II - Dedicated COVID Health Center / DCHC\par
+50  Category II - Dedicated COVID Health Center / DCHC\par
+51  Category II - Dedicated COVID Health Center / DCHC\par
+52  Category II - Dedicated COVID Health Center / DCHC\par
+53  Category II - Dedicated COVID Health Center / DCHC\par
+54  Category II - Dedicated COVID Health Center / DCHC\par
+55  Category II - Dedicated COVID Health Center / DCHC\par
+56  Category II - Dedicated COVID Health Center / DCHC\par
+57  Category II - Dedicated COVID Health Center / DCHC\par
+58  Category II - Dedicated COVID Health Center / DCHC\par
+59  Category II - Dedicated COVID Health Center / DCHC\par
+60  Category II - Dedicated COVID Health Center / DCHC\par
+61  Category II - Dedicated COVID Health Center / DCHC\par
+62  Category II - Dedicated COVID Health Center / DCHC\par
+63  Category II - Dedicated COVID Health Center / DCHC\par
+64  Category II - Dedicated COVID Health Center / DCHC\par
+65  Category II - Dedicated COVID Health Center / DCHC\par
+66  Category II - Dedicated COVID Health Center / DCHC\par
+67  Category II - Dedicated COVID Health Center / DCHC\par
+68  Category II - Dedicated COVID Health Center / DCHC\par
+69  Category II - Dedicated COVID Health Center / DCHC\par
+70  Category II - Dedicated COVID Health Center / DCHC\par
+71  Category II - Dedicated COVID Health Center / DCHC\par
+72  Category II - Dedicated COVID Health Center / DCHC\par
+73  Category II - Dedicated COVID Health Center / DCHC\par
+74  Category II - Dedicated COVID Health Center / DCHC\par
+75  Category II - Dedicated COVID Health Center / DCHC\par
+76  Category II - Dedicated COVID Health Center / DCHC\par
+77  Category II - Dedicated COVID Health Center / DCHC\par
+78  Category II - Dedicated COVID Health Center / DCHC\par
+79  Category II - Dedicated COVID Health Center / DCHC\par
+80  Category II - Dedicated COVID Health Center / DCHC\par
+81  Category II - Dedicated COVID Health Center / DCHC\par
+82  Category II - Dedicated COVID Health Center / DCHC\par
+83  Category II - Dedicated COVID Health Center / DCHC\par
+84  Category II - Dedicated COVID Health Center / DCHC\par
+85  Category II - Dedicated COVID Health Center / DCHC\par
+86  Category II - Dedicated COVID Health Center / DCHC\par
+87  Category II - Dedicated COVID Health Center / DCHC\par
+88  Category II - Dedicated COVID Health Center / DCHC\par
+89  Category II - Dedicated COVID Health Center / DCHC\par
+90  Category II - Dedicated COVID Health Center / DCHC\par
+91  Category II - Dedicated COVID Health Center / DCHC\par
+92  Category II - Dedicated COVID Health Center / DCHC\par
+93  Category II - Dedicated COVID Health Center / DCHC\par
+94  Category II - Dedicated COVID Health Center / DCHC\par
+95  Category II - Dedicated COVID Health Center / DCHC\par
+96  Category II - Dedicated COVID Health Center / DCHC\par
+97  Category II - Dedicated COVID Health Center / DCHC\par
+98  Category II - Dedicated COVID Health Center / DCHC\par
+99  Category II - Dedicated COVID Health Center / DCHC\par
+100 Category II - Dedicated COVID Health Center / DCHC\par
+101 Category II - Dedicated COVID Health Center / DCHC\par
+102 Category II - Dedicated COVID Health Center / DCHC\par
+103 Category II - Dedicated COVID Health Center / DCHC\par
+104 Category II - Dedicated COVID Health Center / DCHC\par
+105 Category II - Dedicated COVID Health Center / DCHC\par
+> dataset[1:10]\par
+Error in `[.data.frame`(dataset, 1:10) : undefined columns selected\par
+> dataset[1:5]\par
+Error in `[.data.frame`(dataset, 1:5) : undefined columns selected\par
+> dataset[1:5,]\par
+  S.No District                                Name.of.the.Hospital\par
+1    1 Ariyalur                                     Jayamkondan_SDH\par
+2    2 Ariyalur                                     Golden Hospital\par
+3    3  Chennai          CSI Kalyani General Hospital, Chennai Town\par
+4    4  Chennai GEM Hospital And Research Ctr Pvt.Ltd, Chennai Town\par
+5    5  Chennai                                     Kavery Hospital\par
+                                    Type.of.Hospital\par
+1 Category II - Dedicated COVID Health Center / DCHC\par
+2 Category II - Dedicated COVID Health Center / DCHC\par
+3 Category II - Dedicated COVID Health Center / DCHC\par
+4 Category II - Dedicated COVID Health Center / DCHC\par
+5 Category II - Dedicated COVID Health Center / DCHC\par
+> dataset[1:7,1:3]\par
+  S.No   District                                Name.of.the.Hospital\par
+1    1   Ariyalur                                     Jayamkondan_SDH\par
+2    2   Ariyalur                                     Golden Hospital\par
+3    3    Chennai          CSI Kalyani General Hospital, Chennai Town\par
+4    4    Chennai GEM Hospital And Research Ctr Pvt.Ltd, Chennai Town\par
+5    5    Chennai                                     Kavery Hospital\par
+6    6    Chennai           Prashanth Hospital Velachery Chennai Town\par
+7    7 Coimbatore                                    Mettupalayam_SDH\par
+> dataset[,]        #all rows of data\par
+    S.No        District                                  Name.of.the.Hospital\par
+1      1        Ariyalur                                       Jayamkondan_SDH\par
+2      2        Ariyalur                                       Golden Hospital\par
+3      3         Chennai            CSI Kalyani General Hospital, Chennai Town\par
+4      4         Chennai   GEM Hospital And Research Ctr Pvt.Ltd, Chennai Town\par
+5      5         Chennai                                       Kavery Hospital\par
+6      6         Chennai             Prashanth Hospital Velachery Chennai Town\par
+7      7      Coimbatore                                      Mettupalayam_SDH\par
+8      8      Coimbatore                           G. Kuppusamy Naidu Hospital\par
+9      9       Cuddalore        Subha Anandham Medical Centre, Cuddalore, Town\par
+10    10      Dharmapuri                                             Harur_SDH\par
+11    11      Dharmapuri               Supa Hospital, Pvt.Ltd, Dharmapuri Town\par
+12    12      Dharmapuri                   Om Sakthi Hospital, Dharmapuri Town\par
+13    13      Dharmapuri                       DNV Polyclinic, Dharmapuri Town\par
+14    14        Dindigul                                        Kodaikanal_SDH\par
+15    15    Kallakurichi                                        Ulundurpet_SDH\par
+16    16    Kallakurichi                                        Tirukoilur_SDH\par
+17    17    Kancheepuram                                    Sriperumputhur_SDH\par
+18    18    Kancheepuram                                         Walajabad_SDH\par
+19    19    Kancheepuram                                       Uthiramerur_SDH\par
+20    20   Kanniyakumari               Holy Cross Hospital, Kanniyakumari Town\par
+21    21           Karur                      Apollo Logo Hospital, Karur Town\par
+22    22           Karur                       Amaravathi Hospital, Karur Town\par
+23    23     Krishnagiri             Kauvery Hospital, Hosur, Krishnagiri Town\par
+24    24     Krishnagiri       Chandrasekara Hospital, Hosur, Krishnagiri Town\par
+25    25         Madurai                                      Tirumangalam_SDH\par
+26    26         Madurai                                             Melur_SDH\par
+27    27         Madurai                    Devadoss Multispeciality Hospital.\par
+28    28         Madurai                   Lakshmana Multispeciality Hospital.\par
+29    29         Madurai                                 Rahavendhar Hospital.\par
+30    30         Madurai                                    Saravana Hospital.\par
+31    31    Nagapattinam            Arun Priya Nursing Home, Nagapattinam Town\par
+32    32    Nagapattinam         Ram Bone And Joint Hospial, Nagapattinam Town\par
+33    33    Nagapattinam                    Shanthi Nursing Home, Nagapattinam\par
+34    34    Nagapattinam                  Vishnu Hospital , Nagappattinam Town\par
+35    35        Namakkal                                      Tiruchengode_SDH\par
+36    36        Namakkal                                     Gh, Rasipuram_SDH\par
+37    37        Namakkal Aravinth Hospital, Rangar Sannadhi Str, Namakkal Town\par
+38    38        Namakkal                           M.M.Hospital, Namakkal Town\par
+39    39        Namakkal  Maharaja Speciality Hosp Mohanur Road, Namakkal Town\par
+40    40        Nilgiris                        Nankam Hospital, Nilgiris Town\par
+41    41        Nilgiris                   Sagayamatha Hospital, Nilgiris Town\par
+42    42      Perambalur                                  Lakshmi Nursing Home\par
+43    43     Pudukkottai                                       Viralimalai_SDH\par
+44    44     Pudukkottai                             Muthu Meenakshi Hospitals\par
+45    45     Pudukkottai          Sree Durga Surgical Clinic & Research Center\par
+46    46  Ramanathapuram                                        Paramakudi_SDH\par
+47    47  Ramanathapuram                        Aasi Multi Speciality Hospital\par
+48    48  Ramanathapuram                                   Kanagamani Hospital\par
+49    49           Salem                                             Athur_SDH\par
+50    50           Salem                                            Omalur_SDH\par
+51    51           Salem                                           Edapadi_SDH\par
+52    52           Salem                          Kurinji Hospital, Salem Town\par
+53    53           Salem                     SPMM Hospital Ammapet, Salem Town\par
+54    54       Sivaganga                                        Devakottai_SDH\par
+55    55       Sivaganga                      Senthil Hospital, Sivaganga Town\par
+56    56       Sivaganga                      Apollo Hospitals, Sivaganga Town\par
+57    57       Thanjavur                                         Papanasam_SDH\par
+58    58       Thanjavur                                      Thiruvaiyaru_SDH\par
+59    59       Thanjavur                         Anbu Hospital, Thanjavur Town\par
+60    60       Thanjavur     Meenakshi Multispeciality Hospital Thanjavur Town\par
+61    61       Thanjavur          KG Multi Speciality Hospital, Thanjavur Town\par
+62    62       Thanjavur      Diocese Of Thanjavur Society Olh, Thanjavur Town\par
+63    63    The Nilgiris                                           Connoor_SDH\par
+64    64           Theni                                            Cumbum_SDH\par
+65    65           Theni                      NRT Hospital Private, Theni Town\par
+66    66           Theni             Krishnammal Memorial Hospital, Theni Town\par
+67    67           Theni                      T N K H N V Hospital, Theni Town\par
+68    68      Thiruvarur                                 Thiruthuraipoondi_SDH\par
+69    69     Thoothukudi                                     Kayalpattinam_SDH\par
+70    70     Thoothukudi                                       Tiruchendur_SDH\par
+71    71     Thoothukudi                                          AVM Hospital\par
+72    72     Thoothukudi                 Sacred Heart Hospital, Tuticorin Town\par
+73    73 Tiruchirappalli                                         Srirangam_SDH\par
+74    74 Tiruchirappalli                 Maruti Hospital, Thennur, Trichy Town\par
+75    75 Tiruchirappalli              Sinduja Hospital, Manaparai, Trichy Town\par
+76    76     Tirunelveli                                        Shengottah_SDH\par
+77    77     Tirunelveli                                        Kudankulam_SDH\par
+78    78     Tirunelveli                                    Sankaran Kovil_SDH\par
+79    79     Tirunelveli                     Galaxy Hospital, Tirunelveli Town\par
+80    80     Tirunelveli      Ponra Multispeciality Hospital, Tirunelveli Town\par
+81    81     Tirunelveli                      Shifa Hospital, Tirunelveli Town\par
+82    82      Tirupathur                                             Ambur_SDH\par
+83    83      Tirupathur                                       Natrampalli_SDH\par
+84    84      Tirupathur                                       Vaniyambadi_SDH\par
+85    85        Tiruppur                                        Dharapuram_SDH\par
+86    86        Tiruppur                                          Palladam_SDH\par
+87    87        Tiruppur                  Revathi Medical Centre, Tirupur Town\par
+88    88        Tiruppur                    Sri Kumaran Hospital, Tirupur Town\par
+89    89      Tiruvallur                                         Tiruthani_SDH\par
+90    90      Tiruvallur                                           Ponneri_SDH\par
+91    91      Tiruvallur                       Sugam Hospital, Tiruvallur Town\par
+92    92      Tiruvallur                                       Aakash Hospital\par
+93    93       Tiruvarur                                   Navajeevan Hospital\par
+94    94       Tiruvarur                              Tiruvarur Medical Centre\par
+95    95         Vellore                                          Pentland_SDH\par
+96    96      Villupuram                                        Tindivanam_SDH\par
+97    97      Villupuram                                            Gingee_SDH\par
+98    98      Villupuram                                         E.S. Hospital\par
+99    99      Villupuram      I Med Super Speciality Hospitals Villupuram Town\par
+100  100      Villupuram                     Maragadam Hospitalvillupuram Town\par
+101  101      Villupuram                    Sri Sanjeevi Hospital Kallakurichi\par
+102  102    Virudhunagar                                          Sivakasi_SDH\par
+103  103    Virudhunagar                                            Sathur_SDH\par
+104  104    Virudhunagar        City Hospital, Aruppukottai, Virudhunagar Town\par
+105  105    Virudhunagar  Sri Krishna Hospital, Rajapalayam, Virudhunagar Town\par
+                                      Type.of.Hospital\par
+1   Category II - Dedicated COVID Health Center / DCHC\par
+2   Category II - Dedicated COVID Health Center / DCHC\par
+3   Category II - Dedicated COVID Health Center / DCHC\par
+4   Category II - Dedicated COVID Health Center / DCHC\par
+5   Category II - Dedicated COVID Health Center / DCHC\par
+6   Category II - Dedicated COVID Health Center / DCHC\par
+7   Category II - Dedicated COVID Health Center / DCHC\par
+8   Category II - Dedicated COVID Health Center / DCHC\par
+9   Category II - Dedicated COVID Health Center / DCHC\par
+10  Category II - Dedicated COVID Health Center / DCHC\par
+11  Category II - Dedicated COVID Health Center / DCHC\par
+12  Category II - Dedicated COVID Health Center / DCHC\par
+13  Category II - Dedicated COVID Health Center / DCHC\par
+14  Category II - Dedicated COVID Health Center / DCHC\par
+15  Category II - Dedicated COVID Health Center / DCHC\par
+16  Category II - Dedicated COVID Health Center / DCHC\par
+17  Category II - Dedicated COVID Health Center / DCHC\par
+18  Category II - Dedicated COVID Health Center / DCHC\par
+19  Category II - Dedicated COVID Health Center / DCHC\par
+20  Category II - Dedicated COVID Health Center / DCHC\par
+21  Category II - Dedicated COVID Health Center / DCHC\par
+22  Category II - Dedicated COVID Health Center / DCHC\par
+23  Category II - Dedicated COVID Health Center / DCHC\par
+24  Category II - Dedicated COVID Health Center / DCHC\par
+25  Category II - Dedicated COVID Health Center / DCHC\par
+26  Category II - Dedicated COVID Health Center / DCHC\par
+27  Category II - Dedicated COVID Health Center / DCHC\par
+28  Category II - Dedicated COVID Health Center / DCHC\par
+29  Category II - Dedicated COVID Health Center / DCHC\par
+30  Category II - Dedicated COVID Health Center / DCHC\par
+31  Category II - Dedicated COVID Health Center / DCHC\par
+32  Category II - Dedicated COVID Health Center / DCHC\par
+33  Category II - Dedicated COVID Health Center / DCHC\par
+34  Category II - Dedicated COVID Health Center / DCHC\par
+35  Category II - Dedicated COVID Health Center / DCHC\par
+36  Category II - Dedicated COVID Health Center / DCHC\par
+37  Category II - Dedicated COVID Health Center / DCHC\par
+38  Category II - Dedicated COVID Health Center / DCHC\par
+39  Category II - Dedicated COVID Health Center / DCHC\par
+40  Category II - Dedicated COVID Health Center / DCHC\par
+41  Category II - Dedicated COVID Health Center / DCHC\par
+42  Category II - Dedicated COVID Health Center / DCHC\par
+43  Category II - Dedicated COVID Health Center / DCHC\par
+44  Category II - Dedicated COVID Health Center / DCHC\par
+45  Category II - Dedicated COVID Health Center / DCHC\par
+46  Category II - Dedicated COVID Health Center / DCHC\par
+47  Category II - Dedicated COVID Health Center / DCHC\par
+48  Category II - Dedicated COVID Health Center / DCHC\par
+49  Category II - Dedicated COVID Health Center / DCHC\par
+50  Category II - Dedicated COVID Health Center / DCHC\par
+51  Category II - Dedicated COVID Health Center / DCHC\par
+52  Category II - Dedicated COVID Health Center / DCHC\par
+53  Category II - Dedicated COVID Health Center / DCHC\par
+54  Category II - Dedicated COVID Health Center / DCHC\par
+55  Category II - Dedicated COVID Health Center / DCHC\par
+56  Category II - Dedicated COVID Health Center / DCHC\par
+57  Category II - Dedicated COVID Health Center / DCHC\par
+58  Category II - Dedicated COVID Health Center / DCHC\par
+59  Category II - Dedicated COVID Health Center / DCHC\par
+60  Category II - Dedicated COVID Health Center / DCHC\par
+61  Category II - Dedicated COVID Health Center / DCHC\par
+62  Category II - Dedicated COVID Health Center / DCHC\par
+63  Category II - Dedicated COVID Health Center / DCHC\par
+64  Category II - Dedicated COVID Health Center / DCHC\par
+65  Category II - Dedicated COVID Health Center / DCHC\par
+66  Category II - Dedicated COVID Health Center / DCHC\par
+67  Category II - Dedicated COVID Health Center / DCHC\par
+68  Category II - Dedicated COVID Health Center / DCHC\par
+69  Category II - Dedicated COVID Health Center / DCHC\par
+70  Category II - Dedicated COVID Health Center / DCHC\par
+71  Category II - Dedicated COVID Health Center / DCHC\par
+72  Category II - Dedicated COVID Health Center / DCHC\par
+73  Category II - Dedicated COVID Health Center / DCHC\par
+74  Category II - Dedicated COVID Health Center / DCHC\par
+75  Category II - Dedicated COVID Health Center / DCHC\par
+76  Category II - Dedicated COVID Health Center / DCHC\par
+77  Category II - Dedicated COVID Health Center / DCHC\par
+78  Category II - Dedicated COVID Health Center / DCHC\par
+79  Category II - Dedicated COVID Health Center / DCHC\par
+80  Category II - Dedicated COVID Health Center / DCHC\par
+81  Category II - Dedicated COVID Health Center / DCHC\par
+82  Category II - Dedicated COVID Health Center / DCHC\par
+83  Category II - Dedicated COVID Health Center / DCHC\par
+84  Category II - Dedicated COVID Health Center / DCHC\par
+85  Category II - Dedicated COVID Health Center / DCHC\par
+86  Category II - Dedicated COVID Health Center / DCHC\par
+87  Category II - Dedicated COVID Health Center / DCHC\par
+88  Category II - Dedicated COVID Health Center / DCHC\par
+89  Category II - Dedicated COVID Health Center / DCHC\par
+90  Category II - Dedicated COVID Health Center / DCHC\par
+91  Category II - Dedicated COVID Health Center / DCHC\par
+92  Category II - Dedicated COVID Health Center / DCHC\par
+93  Category II - Dedicated COVID Health Center / DCHC\par
+94  Category II - Dedicated COVID Health Center / DCHC\par
+95  Category II - Dedicated COVID Health Center / DCHC\par
+96  Category II - Dedicated COVID Health Center / DCHC\par
+97  Category II - Dedicated COVID Health Center / DCHC\par
+98  Category II - Dedicated COVID Health Center / DCHC\par
+99  Category II - Dedicated COVID Health Center / DCHC\par
+100 Category II - Dedicated COVID Health Center / DCHC\par
+101 Category II - Dedicated COVID Health Center / DCHC\par
+102 Category II - Dedicated COVID Health Center / DCHC\par
+103 Category II - Dedicated COVID Health Center / DCHC\par
+104 Category II - Dedicated COVID Health Center / DCHC\par
+105 Category II - Dedicated COVID Health Center / DCHC\par
+> fivenum(dataset)\par
+Error in `[.data.frame`(x, order(x, na.last = na.last, decreasing = decreasing)) : \par
+  undefined columns selected\par
+> mean(dataset)\par
+[1] NA\par
+Warning message:\par
+In mean.default(dataset) : argument is not numeric or logical: returning NA\par
+> mean(5,trim=0,na.rm=FALSE)\par
+[1] 5\par
+> mean(x,trim=0,na.rm=FALSE)\par
+Error in mean(x, trim = 0, na.rm = FALSE) : object 'x' not found\par
+> mean(10,trim=0,na.rm=FALSE)\par
+[1] 10\par
+> median(dataset)\par
+Error in median.default(dataset) : need numeric data\par
+> median(10,na.rm = FALSE)\par
+[1] 10\par
+> max(table(dataset$Name.of.the.Hospital))\par
+[1] 1\par
+> table(dataset$Name.of.the.Hospital)\par
+\par
+                                      Aakash Hospital \par
+                                                    1 \par
+                       Aasi Multi Speciality Hospital \par
+                                                    1 \par
+                      Amaravathi Hospital, Karur Town \par
+                                                    1 \par
+                                            Ambur_SDH \par
+                                                    1 \par
+                        Anbu Hospital, Thanjavur Town \par
+                                                    1 \par
+                     Apollo Hospitals, Sivaganga Town \par
+                                                    1 \par
+                     Apollo Logo Hospital, Karur Town \par
+                                                    1 \par
+Aravinth Hospital, Rangar Sannadhi Str, Namakkal Town \par
+                                                    1 \par
+           Arun Priya Nursing Home, Nagapattinam Town \par
+                                                    1 \par
+                                            Athur_SDH \par
+                                                    1 \par
+                                         AVM Hospital \par
+                                                    1 \par
+      Chandrasekara Hospital, Hosur, Krishnagiri Town \par
+                                                    1 \par
+       City Hospital, Aruppukottai, Virudhunagar Town \par
+                                                    1 \par
+                                          Connoor_SDH \par
+                                                    1 \par
+           CSI Kalyani General Hospital, Chennai Town \par
+                                                    1 \par
+                                           Cumbum_SDH \par
+                                                    1 \par
+                   Devadoss Multispeciality Hospital. \par
+                                                    1 \par
+                                       Devakottai_SDH \par
+                                                    1 \par
+                                       Dharapuram_SDH \par
+                                                    1 \par
+     Diocese Of Thanjavur Society Olh, Thanjavur Town \par
+                                                    1 \par
+                      DNV Polyclinic, Dharmapuri Town \par
+                                                    1 \par
+                                        E.S. Hospital \par
+                                                    1 \par
+                                          Edapadi_SDH \par
+                                                    1 \par
+                          G. Kuppusamy Naidu Hospital \par
+                                                    1 \par
+                    Galaxy Hospital, Tirunelveli Town \par
+                                                    1 \par
+  GEM Hospital And Research Ctr Pvt.Ltd, Chennai Town \par
+                                                    1 \par
+                                    Gh, Rasipuram_SDH \par
+                                                    1 \par
+                                           Gingee_SDH \par
+                                                    1 \par
+                                      Golden Hospital \par
+                                                    1 \par
+                                            Harur_SDH \par
+                                                    1 \par
+              Holy Cross Hospital, Kanniyakumari Town \par
+                                                    1 \par
+     I Med Super Speciality Hospitals Villupuram Town \par
+                                                    1 \par
+                                      Jayamkondan_SDH \par
+                                                    1 \par
+                                  Kanagamani Hospital \par
+                                                    1 \par
+            Kauvery Hospital, Hosur, Krishnagiri Town \par
+                                                    1 \par
+                                      Kavery Hospital \par
+                                                    1 \par
+                                    Kayalpattinam_SDH \par
+                                                    1 \par
+         KG Multi Speciality Hospital, Thanjavur Town \par
+                                                    1 \par
+                                       Kodaikanal_SDH \par
+                                                    1 \par
+            Krishnammal Memorial Hospital, Theni Town \par
+                                                    1 \par
+                                       Kudankulam_SDH \par
+                                                    1 \par
+                         Kurinji Hospital, Salem Town \par
+                                                    1 \par
+                  Lakshmana Multispeciality Hospital. \par
+                                                    1 \par
+                                 Lakshmi Nursing Home \par
+                                                    1 \par
+                          M.M.Hospital, Namakkal Town \par
+                                                    1 \par
+ Maharaja Speciality Hosp Mohanur Road, Namakkal Town \par
+                                                    1 \par
+                    Maragadam Hospitalvillupuram Town \par
+                                                    1 \par
+                Maruti Hospital, Thennur, Trichy Town \par
+                                                    1 \par
+    Meenakshi Multispeciality Hospital Thanjavur Town \par
+                                                    1 \par
+                                            Melur_SDH \par
+                                                    1 \par
+                                     Mettupalayam_SDH \par
+                                                    1 \par
+                            Muthu Meenakshi Hospitals \par
+                                                    1 \par
+                       Nankam Hospital, Nilgiris Town \par
+                                                    1 \par
+                                      Natrampalli_SDH \par
+                                                    1 \par
+                                  Navajeevan Hospital \par
+                                                    1 \par
+                     NRT Hospital Private, Theni Town \par
+                                                    1 \par
+                  Om Sakthi Hospital, Dharmapuri Town \par
+                                                    1 \par
+                                           Omalur_SDH \par
+                                                    1 \par
+                                         Palladam_SDH \par
+                                                    1 \par
+                                        Papanasam_SDH \par
+                                                    1 \par
+                                       Paramakudi_SDH \par
+                                                    1 \par
+                                         Pentland_SDH \par
+                                                    1 \par
+                                          Ponneri_SDH \par
+                                                    1 \par
+     Ponra Multispeciality Hospital, Tirunelveli Town \par
+                                                    1 \par
+            Prashanth Hospital Velachery Chennai Town \par
+                                                    1 \par
+                                Rahavendhar Hospital. \par
+                                                    1 \par
+        Ram Bone And Joint Hospial, Nagapattinam Town \par
+                                                    1 \par
+                 Revathi Medical Centre, Tirupur Town \par
+                                                    1 \par
+                Sacred Heart Hospital, Tuticorin Town \par
+                                                    1 \par
+                  Sagayamatha Hospital, Nilgiris Town \par
+                                                    1 \par
+                                   Sankaran Kovil_SDH \par
+                                                    1 \par
+                                   Saravana Hospital. \par
+                                                    1 \par
+                                           Sathur_SDH \par
+                                                    1 \par
+                     Senthil Hospital, Sivaganga Town \par
+                                                    1 \par
+                   Shanthi Nursing Home, Nagapattinam \par
+                                                    1 \par
+                                       Shengottah_SDH \par
+                                                    1 \par
+                     Shifa Hospital, Tirunelveli Town \par
+                                                    1 \par
+             Sinduja Hospital, Manaparai, Trichy Town \par
+                                                    1 \par
+                                         Sivakasi_SDH \par
+                                                    1 \par
+                    SPMM Hospital Ammapet, Salem Town \par
+                                                    1 \par
+         Sree Durga Surgical Clinic & Research Center \par
+                                                    1 \par
+ Sri Krishna Hospital, Rajapalayam, Virudhunagar Town \par
+                                                    1 \par
+                   Sri Kumaran Hospital, Tirupur Town \par
+                                                    1 \par
+                   Sri Sanjeevi Hospital Kallakurichi \par
+                                                    1 \par
+                                   Sriperumputhur_SDH \par
+                                                    1 \par
+                                        Srirangam_SDH \par
+                                                    1 \par
+       Subha Anandham Medical Centre, Cuddalore, Town \par
+                                                    1 \par
+                      Sugam Hospital, Tiruvallur Town \par
+                                                    1 \par
+              Supa Hospital, Pvt.Ltd, Dharmapuri Town \par
+                                                    1 \par
+                     T N K H N V Hospital, Theni Town \par
+                                                    1 \par
+                                Thiruthuraipoondi_SDH \par
+                                                    1 \par
+                                     Thiruvaiyaru_SDH \par
+                                                    1 \par
+                                       Tindivanam_SDH \par
+                                                    1 \par
+                                      Tiruchendur_SDH \par
+                                                    1 \par
+                                     Tiruchengode_SDH \par
+                                                    1 \par
+                                       Tirukoilur_SDH \par
+                                                    1 \par
+                                     Tirumangalam_SDH \par
+                                                    1 \par
+                                        Tiruthani_SDH \par
+                                                    1 \par
+                             Tiruvarur Medical Centre \par
+                                                    1 \par
+                                       Ulundurpet_SDH \par
+                                                    1 \par
+                                      Uthiramerur_SDH \par
+                                                    1 \par
+                                      Vaniyambadi_SDH \par
+                                                    1 \par
+                                      Viralimalai_SDH \par
+                                                    1 \par
+                 Vishnu Hospital , Nagappattinam Town \par
+                                                    1 \par
+                                        Walajabad_SDH \par
+                                                    1 \par
+> names(sort(table(dataset$District)))\par
+ [1] "Cuddalore"       "Dindigul"        "Kanniyakumari"   "Perambalur"     \par
+ [5] "The Nilgiris"    "Thiruvarur"      "Vellore"         "Ariyalur"       \par
+ [9] "Coimbatore"      "Kallakurichi"    "Karur"           "Krishnagiri"    \par
+[13] "Nilgiris"        "Tiruvarur"       "Kancheepuram"    "Pudukkottai"    \par
+[17] "Ramanathapuram"  "Sivaganga"       "Tiruchirappalli" "Tirupathur"     \par
+[21] "Chennai"         "Dharmapuri"      "Nagapattinam"    "Theni"          \par
+[25] "Thoothukudi"     "Tiruppur"        "Tiruvallur"      "Virudhunagar"   \par
+[29] "Namakkal"        "Salem"           "Madurai"         "Thanjavur"      \par
+[33] "Tirunelveli"     "Villupuram"     \par
+> sd(x,na.rm = FALSE)\par
+Error in is.data.frame(x) : object 'x' not found\par
+> sd(5,na.rm = FALSE)\par
+[1] NA\par
+> min(Name.of.the.Hospital)\par
+Error: object 'Name.of.the.Hospital' not found\par
+> min(dataset)\par
+Error in FUN(X[[i]], ...) : \par
+  only defined on a data frame with all numeric variables\par
+> range(dataset)\par
+Error in FUN(X[[i]], ...) : \par
+  only defined on a data frame with all numeric variables\par
+> x=df["District"]\par
+Error in df["District"] : object of type 'closure' is not subsettable\par
+> View(dataset)\par
+> x=df['District']\par
+Error in df["District"] : object of type 'closure' is not subsettable\par
+> print(x)\par
+Error in print(x) : object 'x' not found\par
+> x=df['Name of the hospital']\par
+Error in df["Name of the hospital"] : \par
+  object of type 'closure' is not subsettable\par
+> min(table(dataset$District))\par
+[1] 1\par
+> min(table(dataset$Type.of.Hospital))\par
+[1] 105\par
+> range.default(dataset)\par
+[1] "1"             "Walajabad_SDH"\par
+> range(dataset)\par
+Error in FUN(X[[i]], ...) : \par
+  only defined on a data frame with all numeric variables\par
+> range(dataset$District)\par
+[1] "Ariyalur"     "Virudhunagar"\par
+> mode(dataset)\par
+[1] "list"\par
+> range(dataset$District)\par
+[1] "Ariyalur"     "Virudhunagar"\par
+> mode(dataset)\par
+[1] "list"\par
+> View(dataset)\par
+}
+ 
