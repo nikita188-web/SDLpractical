@@ -1,0 +1,320 @@
+> df <- read.csv(file.choose())
+
+> print(df)
+    ï..Sno     Date    Time State.UnionTerritory ConfirmedIndianNational
+1        1 30/01/20 6:00 PM               Kerala                       1
+2        2 31/01/20 6:00 PM               Kerala                       1
+3        3 01/02/20 6:00 PM               Kerala                       2
+4        4 02/02/20 6:00 PM               Kerala                       3
+5        5 03/02/20 6:00 PM               Kerala                       3
+6        6 04/02/20 6:00 PM               Kerala                       3
+7        7 05/02/20 6:00 PM               Kerala                       3
+8        8 06/02/20 6:00 PM               Kerala                       3
+9        9 07/02/20 6:00 PM               Kerala                       3
+10      10 08/02/20 6:00 PM               Kerala                       3
+11      11 09/02/20 6:00 PM               Kerala                       3
+12      12 10/02/20 6:00 PM               Kerala                       3
+13      13 11/02/20 6:00 PM               Kerala                       3
+14      14 12/02/20 6:00 PM               Kerala                       3
+15      15 13/02/20 6:00 PM               Kerala                       3
+16      16 14/02/20 6:00 PM               Kerala                       3
+17      17 15/02/20 6:00 PM               Kerala                       3
+18      18 16/02/20 6:00 PM               Kerala                       3
+19      19 17/02/20 6:00 PM               Kerala                       3
+20      20 18/02/20 6:00 PM               Kerala                       3
+21      21 19/02/20 6:00 PM               Kerala                       3
+22      22 20/02/20 6:00 PM               Kerala                       3
+23      23 21/02/20 6:00 PM               Kerala                       3
+24      24 22/02/20 6:00 PM               Kerala                       3
+25      25 23/02/20 6:00 PM               Kerala                       3
+26      26 24/02/20 6:00 PM               Kerala                       3
+27      27 25/02/20 6:00 PM               Kerala                       3
+28      28 26/02/20 6:00 PM               Kerala                       3
+29      29 27/02/20 6:00 PM               Kerala                       3
+30      30 28/02/20 6:00 PM               Kerala                       3
+31      31 29/02/20 6:00 PM               Kerala                       3
+32      32 01/03/20 6:00 PM               Kerala                       3
+33      33 02/03/20 6:00 PM            Telengana                       1
+34      34 02/03/20 6:00 PM               Kerala                       3
+35      35 02/03/20 6:00 PM                Delhi                       1
+36      36 03/03/20 6:00 PM            Telengana                       1
+37      37 03/03/20 6:00 PM            Rajasthan                       0
+38      38 03/03/20 6:00 PM               Kerala                       3
+39      39 03/03/20 6:00 PM                Delhi                       1
+40      40 04/03/20 6:00 PM        Uttar Pradesh                       6
+41      41 04/03/20 6:00 PM               Kerala                       3
+42      42 04/03/20 6:00 PM              Haryana                       0
+43      43 04/03/20 6:00 PM                Delhi                       1
+44      44 04/03/20 6:00 PM            Telengana                       1
+45      45 04/03/20 6:00 PM            Rajasthan                       1
+46      46 05/03/20 6:00 PM                Delhi                       2
+47      47 05/03/20 6:00 PM              Haryana                       0
+48      48 05/03/20 6:00 PM               Kerala                       3
+49      49 05/03/20 6:00 PM            Rajasthan                       1
+50      50 05/03/20 6:00 PM            Telengana                       1
+51      51 05/03/20 6:00 PM        Uttar Pradesh                       7
+52      52 06/03/20 6:00 PM                Delhi                       3
+53      53 06/03/20 6:00 PM              Haryana                       0
+54      54 06/03/20 6:00 PM               Kerala                       3
+55      55 06/03/20 6:00 PM            Rajasthan                       1
+56      56 06/03/20 6:00 PM        Uttar Pradesh                       7
+57      57 06/03/20 6:00 PM            Telengana                       1
+58      58 07/03/20 6:00 PM               Kerala                       3
+59      59 07/03/20 6:00 PM        Uttar Pradesh                       7
+60      60 07/03/20 6:00 PM               Ladakh                       2
+61      61 07/03/20 6:00 PM            Telengana                       1
+62      62 07/03/20 6:00 PM           Tamil Nadu                       1
+63      63 07/03/20 6:00 PM                Delhi                       3
+64      64 07/03/20 6:00 PM              Haryana                       0
+65      65 07/03/20 6:00 PM            Rajasthan                       1
+66      66 08/03/20 6:00 PM               Ladakh                       2
+67      67 08/03/20 6:00 PM            Telengana                       1
+68      68 08/03/20 6:00 PM           Tamil Nadu                       1
+69      69 08/03/20 6:00 PM            Rajasthan                       1
+70      70 08/03/20 6:00 PM               Kerala                       8
+71      71 08/03/20 6:00 PM              Haryana                       0
+72      72 08/03/20 6:00 PM                Delhi                       3
+73      73 08/03/20 6:00 PM        Uttar Pradesh                       7
+74      74 09/03/20 6:00 PM               Ladakh                       2
+75      75 09/03/20 6:00 PM            Karnataka                       1
+76      76 09/03/20 6:00 PM               Kerala                       9
+77      77 09/03/20 6:00 PM          Maharashtra                       2
+78      78 09/03/20 6:00 PM               Punjab                       1
+79      79 09/03/20 6:00 PM            Rajasthan                       1
+80      80 09/03/20 6:00 PM           Tamil Nadu                       1
+81      81 09/03/20 6:00 PM            Telengana                       1
+82      82 09/03/20 6:00 PM    Jammu and Kashmir                       1
+83      83 09/03/20 6:00 PM        Uttar Pradesh                       7
+84      84 09/03/20 6:00 PM              Haryana                       0
+85      85 09/03/20 6:00 PM                Delhi                       4
+86      86 10/03/20 6:00 PM        Uttar Pradesh                       7
+87      87 10/03/20 6:00 PM               Ladakh                       2
+88      88 10/03/20 6:00 PM                Delhi                       4
+89      89 10/03/20 6:00 PM              Haryana                       0
+90      90 10/03/20 6:00 PM            Karnataka                       4
+91      91 10/03/20 6:00 PM               Kerala                      15
+92      92 10/03/20 6:00 PM          Maharashtra                       5
+93      93 10/03/20 6:00 PM               Punjab                       1
+94      94 10/03/20 6:00 PM            Rajasthan                       1
+95      95 10/03/20 6:00 PM           Tamil Nadu                       1
+96      96 10/03/20 6:00 PM            Telengana                       1
+97      97 10/03/20 6:00 PM    Jammu and Kashmir                       1
+98      98 11/03/20 6:00 PM          Maharashtra                       2
+99      99 11/03/20 6:00 PM                Delhi                       5
+100    100 11/03/20 6:00 PM              Haryana                       0
+101    101 11/03/20 6:00 PM               Kerala                      17
+102    102 11/03/20 6:00 PM            Rajasthan                       1
+103    103 11/03/20 6:00 PM            Telengana                       1
+104    104 11/03/20 6:00 PM        Uttar Pradesh                       9
+105    105 11/03/20 6:00 PM               Ladakh                       2
+106    106 11/03/20 6:00 PM           Tamil Nadu                       1
+107    107 11/03/20 6:00 PM    Jammu and Kashmir                       1
+108    108 11/03/20 6:00 PM               Punjab                       1
+109    109 11/03/20 6:00 PM            Karnataka                       4
+110    110 12/03/20 6:00 PM                Delhi                       6
+111    111 12/03/20 6:00 PM              Haryana                       0
+    ConfirmedForeignNational Cured Deaths Confirmed
+1                          0     0      0         1
+2                          0     0      0         1
+3                          0     0      0         2
+4                          0     0      0         3
+5                          0     0      0         3
+6                          0     0      0         3
+7                          0     0      0         3
+8                          0     0      0         3
+9                          0     0      0         3
+10                         0     0      0         3
+11                         0     0      0         3
+12                         0     0      0         3
+13                         0     0      0         3
+14                         0     0      0         3
+15                         0     0      0         3
+16                         0     0      0         3
+17                         0     0      0         3
+18                         0     0      0         3
+19                         0     0      0         3
+20                         0     0      0         3
+21                         0     0      0         3
+22                         0     0      0         3
+23                         0     0      0         3
+24                         0     0      0         3
+25                         0     0      0         3
+26                         0     0      0         3
+27                         0     0      0         3
+28                         0     0      0         3
+29                         0     0      0         3
+30                         0     0      0         3
+31                         0     0      0         3
+32                         0     0      0         3
+33                         0     0      0         1
+34                         0     0      0         3
+35                         0     0      0         1
+36                         0     0      0         1
+37                         1     0      0         1
+38                         0     3      0         3
+39                         0     0      0         1
+40                         0     0      0         6
+41                         0     3      0         3
+42                         2     0      0         2
+43                         0     0      0         1
+44                         0     0      0         1
+45                        14     0      0        15
+46                         0     0      0         2
+47                         2     0      0         2
+48                         0     3      0         3
+49                        14     0      0        15
+50                         0     0      0         1
+51                         0     0      0         7
+52                         0     0      0         3
+53                         2     0      0         2
+54                         0     3      0         3
+55                        14     0      0        15
+56                         0     0      0         7
+57                         0     0      0         1
+58                         0     3      0         3
+59                         0     0      0         7
+60                         0     0      0         2
+61                         0     0      0         1
+62                         0     0      0         1
+63                         0     0      0         3
+64                         2     0      0         2
+65                        14     0      0        15
+66                         0     0      0         2
+67                         0     0      0         1
+68                         0     0      0         1
+69                        14     0      0        15
+70                         0     3      0         8
+71                         2     0      0         2
+72                         0     0      0         3
+73                         0     0      0         7
+74                         0     0      0         2
+75                         0     0      0         1
+76                         0     3      0         9
+77                         0     0      0         2
+78                         0     0      0         1
+79                        14     0      0        15
+80                         0     0      0         1
+81                         0     0      0         1
+82                         0     0      0         1
+83                         0     0      0         7
+84                         2     0      0         2
+85                         0     0      0         4
+86                         0     0      0         7
+87                         0     0      0         2
+88                         0     0      0         4
+89                         2     0      0         2
+90                         0     0      0         4
+91                         0     3      0        15
+92                         0     0      0         5
+93                         0     0      0         1
+94                        14     0      0        15
+95                         0     0      0         1
+96                         0     0      0         1
+97                         0     0      0         1
+98                         0     0      0         2
+99                         0     0      0         5
+100                       14     0      0        14
+101                        0     3      0        17
+102                        2     0      0         3
+103                        0     0      0         1
+104                        0     0      0         9
+105                        0     0      0         2
+106                        0     0      0         1
+107                        0     0      0         1
+108                        0     0      0         1
+109                        0     0      0         4
+110                        0     0      0         6
+111                       14     0      0        14
+ [ reached 'max' / getOption("max.print") -- omitted 9180 rows ]
+> str(df)
+'data.frame':	9291 obs. of  9 variables:
+ $ ï..Sno                  : int  1 2 3 4 5 6 7 8 9 10 ...
+ $ Date                    : chr  "30/01/20" "31/01/20" "01/02/20" "02/02/20" ...
+ $ Time                    : chr  "6:00 PM" "6:00 PM" "6:00 PM" "6:00 PM" ...
+ $ State.UnionTerritory    : chr  "Kerala" "Kerala" "Kerala" "Kerala" ...
+ $ ConfirmedIndianNational : chr  "1" "1" "2" "3" ...
+ $ ConfirmedForeignNational: chr  "0" "0" "0" "0" ...
+ $ Cured                   : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Deaths                  : int  0 0 0 0 0 0 0 0 0 0 ...
+ $ Confirmed               : int  1 1 2 3 3 3 3 3 3 3 ...
+> # Correlation 
+> 
+> # Pearson Correlation
+> 
+> cor(df$Confirmed, df$Deaths , method = "pearson")
+[1] 0.9137767
+> # To assess statistical significance, you can use cor.test() function.
+> cor.test(df$Confirmed , df$Deaths , method = "pearson")
+
+	Pearson's product-moment correlation
+
+data:  df$Confirmed and df$Deaths
+t = 216.8, df = 9289, p-value < 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.9103577 0.9170708
+sample estimates:
+      cor 
+0.9137767 
+
+> x <- seq(-10,10,1)
+> y <- x*x
+> plot(x,y)
+Error in plot.new() : figure margins too large
+> cor(x,y)
+[1] 0
+>  Simple Linear Regression
+Error: unexpected symbol in " Simple Linear"
+> df_data <- df[,c(1,2,8:9)]
+> # Simple Linear Regression
+> df_data <- df[,c(1,2,8:9)]
+> summary(df_data[,-1])
+     Date               Deaths          Confirmed        
+ Length:9291        Min.   :    0.0   Min.   :      0.0  
+ Class :character   1st Qu.:    2.0   1st Qu.:    538.5  
+ Mode  :character   Median :   66.0   Median :   6832.0  
+                    Mean   : 1487.6   Mean   :  91839.8  
+                    3rd Qu.:  926.5   3rd Qu.:  78856.0  
+                    Max.   :47827.0   Max.   :1859367.0  
+> lm1 <- lm(Confirmed ~ Deaths , data = df_data)
+> plot(Confirmed ~ Deaths, data = df_data)
+> abline(lm1)
+> names(lm1)
+ [1] "coefficients"  "residuals"     "effects"       "rank"         
+ [5] "fitted.values" "assign"        "qr"            "df.residual"  
+ [9] "xlevels"       "call"          "terms"         "model"        
+> print(lm1)
+
+Call:
+lm(formula = Confirmed ~ Deaths, data = df_data)
+
+Coefficients:
+(Intercept)       Deaths  
+   29377.05        41.99  
+
+> plot(fitted(lm1), resid(lm1))
+> qqnorm(resid(lm1))
+> lm2 <- lm(Confirmed ~ Deaths+ï..Sno  , data = df_data)
+> summary(lm2)
+
+Call:
+lm(formula = Confirmed ~ Deaths + ï..Sno, data = df_data)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-248723  -39561   -8407   18977  497310 
+
+Coefficients:
+              Estimate Std. Error t value Pr(>|t|)    
+(Intercept) -3.273e+04  1.672e+03  -19.57   <2e-16 ***
+Deaths       3.965e+01  1.845e-01  214.93   <2e-16 ***
+ï..Sno       1.412e+01  3.242e-01   43.53   <2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 80190 on 9288 degrees of freedom
+Multiple R-squared:  0.863,	Adjusted R-squared:  0.8629 
+F-statistic: 2.924e+04 on 2 and 9288 DF,  p-value: < 2.2e-16
+
+> par(mfrow=c(2,2)) 
+> plot(lm2, which=1:4)
